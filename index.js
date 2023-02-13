@@ -10,54 +10,82 @@ app.use(express.static("public"));
 // Using the images folder at the route /images
 app.use("/images", express.static("images"));
 
+// // GET
+// app.get("/", (request, response) => {
+//   response.json(data);
+// });
+
+// // GET with routing parameters
+// app.get("/class/:id", (req, res) => {
+//   const studentId = Number(req.params.id);
+//   const student = data.filter((student) => student.id === studentId);
+//   res.send(student);
+// });
+
+// // GET with next
+// app.get(
+//   "/next",
+//   (request, response, next) => {
+//     console.log("The response will be sent by the next function");
+//     next();
+//   },
+//   (req, res) => {
+//     res.send("I just set up a route with a second callback");
+//   }
+// );
+
+// // GET - download
+// app.get("/download", (request, response) => {
+//   response.download("images/bg3.jpg");
+// });
+
+// // GET - redirect
+// app.get("/redirect", (request, response) => {
+//   response.redirect("https://instagram.com");
+// });
+
+// // POST
+// app.post("/create", (request, response) => {
+//   response.send("This is a POST request at /create");
+// });
+
+// // PUT
+// app.put("/edit", (request, response) => {
+//   response.send("This is a PUT request at /edit");
+// });
+
+// // DELETE
+// app.delete("/delete", (request, response) => {
+//   response.send("This is a DELETE request at /delete");
+// });
+
+app
+  .route("/class")
+  .get((req, res) => {
+    res.send("Retrieve class info");
+  })
+  .post((req, res) => {
+    res.send("Create class info");
+  })
+  .put((req, res) => {
+    res.send("Update class info");
+  });
+
+// Route Chaining
 // GET
-app.get("/", (request, response) => {
-  response.json(data);
-});
-
-// GET with routing parameters
-app.get("/class/:id", (req, res) => {
-  const studentId = Number(req.params.id);
-  const student = data.filter((student) => student.id === studentId);
-  res.send(student);
-});
-
-// GET with next
-app.get(
-  "/next",
-  (request, response, next) => {
-    console.log("The response will be sent by the next function");
-    next();
-  },
-  (req, res) => {
-    res.send("I just set up a route with a second callback");
-  }
-);
-
-// GET - download
-app.get("/download", (request, response) => {
-  response.download("images/bg3.jpg");
-});
-
-// GET - redirect
-app.get("/redirect", (request, response) => {
-  response.redirect("https://instagram.com");
-});
+// app.get("/class", (req, res) => {
+//   res.send("Retrieve class info");
+// });
 
 // POST
-app.post("/create", (request, response) => {
-  response.send("This is a POST request at /create");
-});
+// app.post("/class", (req, res) => {
+//   res.send("Create class info");
+// });
 
 // PUT
-app.put("/edit", (request, response) => {
-  response.send("This is a PUT request at /edit");
-});
-
-// DELETE
-app.delete("/delete", (request, response) => {
-  response.send("This is a DELETE request at /delete");
-});
+// app.put("/class", (req, res) => {
+//   res.send("Update class info");
+// });
 
 app.listen(PORT, () => {
   console.log(`The server is running on port ${PORT}`);
