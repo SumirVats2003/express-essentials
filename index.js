@@ -4,6 +4,12 @@ import data from "./data/mock.json" assert { type: "json" };
 const app = express();
 const PORT = 3000;
 
+// Using the public folder at the root of the project
+app.use(express.static("public"));
+
+// Using the images folder at the route /images
+app.use("/images", express.static("images"));
+
 // GET
 app.get("/", (request, response) => {
   response.json(data);
