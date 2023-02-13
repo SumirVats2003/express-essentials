@@ -22,6 +22,18 @@ app.get("/class/:id", (req, res) => {
   res.send(student);
 });
 
+// GET with next
+app.get(
+  "/next",
+  (request, response, next) => {
+    console.log("The response will be sent by the next function");
+    next();
+  },
+  (req, res) => {
+    res.send("I just set up a route with a second callback");
+  }
+);
+
 // POST
 app.post("/create", (request, response) => {
   response.send("This is a POST request at /create");
