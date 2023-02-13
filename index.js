@@ -34,6 +34,16 @@ app.get(
   }
 );
 
+// GET - download
+app.get("/download", (request, response) => {
+  response.download("images/bg3.jpg");
+});
+
+// GET - redirect
+app.get("/redirect", (request, response) => {
+  response.redirect("https://instagram.com");
+});
+
 // POST
 app.post("/create", (request, response) => {
   response.send("This is a POST request at /create");
