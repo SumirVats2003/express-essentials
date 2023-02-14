@@ -15,7 +15,7 @@ app.use("/images", express.static("images"));
 // app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// POST
+// POST - JSON and URLEncoded
 app.post("/item", (req, res) => {
   console.log(req.body);
   res.send(req.body);
@@ -73,7 +73,8 @@ app.post("/item", (req, res) => {
 app
   .route("/class")
   .get((req, res) => {
-    res.send("Retrieve class info");
+    // res.send("Retrieve class info");
+    throw new Error();
   })
   .post((req, res) => {
     res.send("Create class info");
@@ -97,6 +98,12 @@ app
 // app.put("/class", (req, res) => {
 //   res.send("Update class info");
 // });
+
+// Middleware for error handling
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something is broken!");
+});
 
 app.listen(PORT, () => {
   console.log(`The server is running on port ${PORT}`);
