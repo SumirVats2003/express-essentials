@@ -27,11 +27,11 @@ app.post("/item", (req, res) => {
 // });
 
 // // GET with routing parameters
-// app.get("/class/:id", (req, res) => {
-//   const studentId = Number(req.params.id);
-//   const student = data.filter((student) => student.id === studentId);
-//   res.send(student);
-// });
+app.get("/class/:id", (req, res) => {
+  const studentId = Number(req.params.id);
+  const student = data.filter((student) => student.id === studentId);
+  res.send(student);
+});
 
 // // GET with next
 // app.get(
