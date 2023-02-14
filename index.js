@@ -10,6 +10,17 @@ app.use(express.static("public"));
 // Using the images folder at the route /images
 app.use("/images", express.static("images"));
 
+// Middleware
+// Using express.json & express.urlencoded
+// app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// POST
+app.post("/item", (req, res) => {
+  console.log(req.body);
+  res.send(req.body);
+});
+
 // // GET
 // app.get("/", (request, response) => {
 //   response.json(data);
